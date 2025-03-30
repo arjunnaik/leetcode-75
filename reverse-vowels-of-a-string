@@ -1,0 +1,16 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function (s) {
+    let array1 = s.split(""), p1 = 0, p2 = s.length - 1;
+    const vowels = new Set('aeiouAEIOU');
+
+    while (p1 < p2) {
+        while (p1 < p2 && !vowels.has(array1[p1])) p1++;
+        while (p1 < p2 && !vowels.has(array1[p2])) p2--;
+        [array1[p1], array1[p2]] = [array1[p2], array1[p1]]
+        p1++, p2--;
+    }
+    return array1.join("")
+};
