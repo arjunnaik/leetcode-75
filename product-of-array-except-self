@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function (nums) {
+    let product = 1
+    const newNum = nums.map((num) => {
+        product = product * num
+        return product
+    })
+    product = 1
+    let newNum2 = nums.reverse().map((num) => {
+        product = product * num
+        return product
+    })
+    newNum2 = newNum2.reverse()
+    let answer = new Array(nums.length)
+    for (let i = 0; i < nums.length; i++) {
+        answer[i] = (newNum[i - 1] ?? 1) * (newNum2[i + 1] ?? 1)
+    }
+    return answer
+};
