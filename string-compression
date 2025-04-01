@@ -1,0 +1,30 @@
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function (chars) {
+
+
+    let p1 = 0
+    let char = chars[0];
+    let counter = 1;
+    function helper() {
+        if (counter > 1) {
+            for (const val of counter.toString())
+                chars[++p1] = val
+
+        }
+    }
+    for (let i = 1; i < chars.length; i++) {
+        if (char !== chars[i]) {
+            char = chars[i]
+            helper()
+            chars[++p1] = char
+            counter = 0
+        }
+        counter++;
+    }
+    helper()
+    return p1 + 1
+
+};
